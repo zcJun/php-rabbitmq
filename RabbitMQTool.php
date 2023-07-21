@@ -14,6 +14,7 @@ use PhpAmqpLib\Wire\AMQPTable;
 
 class RabbitMQTool
 {
+    private static $instance; // 单例实例
     private $connection; // RabbitMQ连接对象
     private $channel; // RabbitMQ通道对象
 
@@ -26,6 +27,15 @@ class RabbitMQTool
             echo $e->getMessage();
         }
     }
+
+//    //单例模式
+//    public static function getInstance($host, $port, $username, $password)
+//    {
+//        if (!self::$instance) {
+//            self::$instance = new self($host, $port, $username, $password);
+//        }
+//        return self::$instance;
+//    }
 
     public function __destruct()
     {
